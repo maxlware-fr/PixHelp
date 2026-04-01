@@ -1,5 +1,6 @@
 // background.js
 let extensionEnabled = true;
+console.log('PixHelp Professeur - Background script chargé.');
 
 chrome.storage.sync.get({ enabled: true }, (data) => {
   extensionEnabled = data.enabled;
@@ -28,7 +29,7 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
   chrome.tabs.get(activeInfo.tabId, (tab) => {
     if (tab.url) {
       const isPix = tab.url.includes('pix.fr') || tab.url.includes('app.pix.fr');
-      const iconPath = (extensionEnabled && isPix) ? 'icons/icon_active.png' : 'icons/icon.png';
+      const iconPath = (extensionEnabled && isPix) ? 'icons/icon_prof.png' : 'icons/icon.png';
       chrome.action.setIcon({ tabId: activeInfo.tabId, path: { 128: iconPath } });
     }
   });
@@ -37,7 +38,7 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.url && tab.active) {
     const isPix = tab.url.includes('pix.fr') || tab.url.includes('app.pix.fr');
-    const iconPath = (extensionEnabled && isPix) ? 'icons/icon_active.png' : 'icons/icon.png';
+    const iconPath = (extensionEnabled && isPix) ? 'icons/icon_prof.png' : 'icons/icon.png';
     chrome.action.setIcon({ tabId: tabId, path: { 128: iconPath } });
   }
 });

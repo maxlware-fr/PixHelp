@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "PixHelp",
-  "version": "1.0.0",
-  "description": "Aide pour la plateforme Pix avec des fonctionnalités supplémentaires",
+  "version": "1.0.1",
+  "description": "Assistant pour la plateforme Pix – recherche autorisée et ressources pédagogiques",
   "permissions": [
     "activeTab",
     "tabs",
@@ -11,7 +11,8 @@
   ],
   "host_permissions": [
     "https://pix.fr/*",
-    "https://app.pix.fr/*"
+    "https://app.pix.fr/*",
+    "https://orga.pix.fr/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -37,7 +38,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "pixhelp@example.com"
+      "id": "pixhelp@maxlware.com"
     }
   }
 }

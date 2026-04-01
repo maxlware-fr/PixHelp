@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "PixHelp Prof",
+  "version": "1.0.0",
+  "description": "Une extension pour les proffeseurs pour contrôler leurs élèves utilisant Pix.",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://pix.fr/*",
+    "https://app.pix.fr/*",
+    "https://*.pix.fr/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "128": "icons/icon_prof.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://pix.fr/*",
+        "https://app.pix.fr/*",
+        "https://*.pix.fr/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "128": "icons/icon_prof.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "pixhelp@maxlware.com"
+    }
+  }
+}

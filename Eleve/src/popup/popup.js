@@ -28,3 +28,7 @@ document.getElementById('btn-dev').addEventListener('click', () => {
 document.getElementById('btn-github').addEventListener('click', () => {
   chrome.tabs.create({ url: 'https://github.com/votre-compte/pixhelp' });
 });
+
+document.getElementById('btn-prof').addEventListener('click', () => {
+  chrome.tabs.create({ url: 'https://pixhelp.maxlware.com/prof' });
+});

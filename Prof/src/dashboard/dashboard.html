@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixHelp – Tableau de bord professeur</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👨‍🏫 PixHelp – Espace Professeur</h1>
+            <p>Gérez et surveillez vos sessions Pix</p>
+        </header>
+
+        <div class="session-info">
+            <h2>Session en cours</h2>
+            <div id="session-status">Chargement...</div>
+            <div id="session-details"></div>
+            <button id="refresh-session" class="btn">🔄 Rafraîchir</button>
+        </div>
+
+        <div class="students-list">
+            <h2>📋 Élèves connectés (simulation)</h2>
+            <div id="students-container">
+                <div class="student-card">
+                    <span class="student-name">Lucas Martin</span>
+                    <span class="student-status">✅ Actif</span>
+                    <span class="student-progress">Progression : 67%</span>
+                </div>
+                <div class="student-card">
+                    <span class="student-name">Emma Bernard</span>
+                    <span class="student-status">✅ Actif</span>
+                    <span class="student-progress">Progression : 42%</span>
+                </div>
+                <div class="student-card">
+                    <span class="student-name">Thomas Dubois</span>
+                    <span class="student-status">⏸️ Inactif</span>
+                    <span class="student-progress">Progression : 23%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <h2>⚙️ Actions</h2>
+            <button id="export-data" class="btn">📊 Exporter les données (CSV)</button>
+            <button id="send-message" class="btn">✉️ Envoyer un message à tous</button>
+            <button id="open-pix" class="btn">🌐 Ouvrir Pix Orga</button>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>
