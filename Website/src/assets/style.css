@@ -1,0 +1,84 @@
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f9fafc;
+            color: #1e2a3a;
+            line-height: 1.5;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.2rem;
+        }
+        .logo {
+            width: 64px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .sub {
+            color: #4a627a;
+            margin-bottom: 2rem;
+        }
+        hr {
+            margin: 2rem 0;
+            border: none;
+            border-top: 1px solid #e2e8f0;
+        }
+        .feature {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            align-items: center;
+        }
+        .feature img {
+            width: 280px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: #eef2f7;
+        }
+        .feature-text {
+            flex: 1;
+        }
+        .feature-text h3 {
+            margin-top: 0;
+            color: #2c4e7a;
+        }
+        .install {
+            background: #eef2f7;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+        .btn {
+            display: inline-block;
+            background: #3a6ea5;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .btn-github {
+            background: #24292e;
+        }
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6c86a3;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+        }
+        @media (max-width: 700px) {
+            .feature {
+                flex-direction: column;
+                text-align: center;
+            }
+            .feature img {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
