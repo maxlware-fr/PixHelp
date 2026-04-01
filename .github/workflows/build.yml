@@ -1,0 +1,70 @@
+name: Build and Zip PixHelp
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create build directories
+        run: |
+          mkdir -p build/eleve
+          mkdir -p build/prof
+
+      - name: Copy Eleve files
+        run: |
+          cp -r Eleve/src/* build/eleve/
+          echo "Version: $(git describe --tags --always)" > build/eleve/version.txt
+
+      - name: Copy Prof files
+        run: |
+          cp -r Prof/src/* build/prof/
+          echo "Version: $(git describe --tags --always)" > build/prof/version.txt
+
+      - name: Zip Eleve version
+        run: |
+          cd build/eleve
+          zip -r ../pixhelp-eleve.zip .
+          cd ../..
+
+      - name: Zip Prof version
+        run: |
+          cd build/prof
+          zip -r ../pixhelp-prof.zip .
+          cd ../..
+
+      - name: Upload artifacts (Eleve)
+        uses: actions/upload-artifact@v4
+        with:
+          name: pixhelp-eleve
+          path: build/pixhelp-eleve.zip
+
+      - name: Upload artifacts (Prof)
+        uses: actions/upload-artifact@v4
+        with:
+          name: pixhelp-prof
+          path: build/pixhelp-prof.zip
+
+      - name: Create Release (if tag)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            build/pixhelp-eleve.zip
+            build/pixhelp-prof.zip
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            ## PixHelp ${{ github.ref_name }}
+            - Téléchargez la version Élève : pixhelp-eleve.zip
+            - Téléchargez la version Professeur : pixhelp-prof.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
