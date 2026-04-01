@@ -1,0 +1,121 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+    color: #2c3e50;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 24px;
+}
+
+header {
+    text-align: center;
+    border-bottom: 2px solid #3a6ea5;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+}
+
+header h1 {
+    margin: 0;
+    color: #3a6ea5;
+}
+
+.session-info, .students-list, .actions {
+    background: #f9fafc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: #2c4e7a;
+    border-left: 4px solid #3a6ea5;
+    padding-left: 12px;
+}
+
+#session-status {
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+#session-details {
+    background: #eef2f7;
+    padding: 8px;
+    border-radius: 8px;
+    margin: 8px 0;
+    font-size: 0.9rem;
+}
+
+.student-card {
+    background: white;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: transform 0.1s;
+}
+
+.student-card:hover {
+    transform: translateX(4px);
+    background: #eef2ff;
+}
+
+.student-name {
+    font-weight: bold;
+}
+
+.student-status {
+    color: #2ecc71;
+    font-size: 0.9rem;
+}
+
+.student-status:contains("Inactif") {
+    color: #e67e22;
+}
+
+.student-progress {
+    font-size: 0.85rem;
+    color: #3a6ea5;
+}
+
+.btn {
+    background: #3a6ea5;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-right: 12px;
+    margin-bottom: 8px;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: #2c4e7a;
+}
+
+.actions {
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .student-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+}
