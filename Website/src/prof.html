@@ -3,70 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixHelp Prof – Supervision des sessions Pix</title>
-    <link rel="stylesheet" href="assets/style-prof.css">
+    <title>PixHelp Prof – Assistant pédagogique pour Pix</title>
     <link rel="icon" href="assets/icon_prof.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style-prof.css">
 </head>
 <body>
 
-<img class="logo" src="assets/icon_prof.png" alt="PixHelp Prof">
-<h1>PixHelp Prof</h1>
-<div class="sub">Supervisez vos sessions Pix en toute simplicité.</div>
+<div class="sibling-bar">
+    🎓 Tu es élève ? Découvre <a href="index.html">PixHelp</a>, l'assistant conçu pour toi.
+</div>
 
-<hr>
-
-<div class="feature">
-    <img src="assets/orga.png" alt="Bouton dans le popup">
-    <div class="feature-text">
-        <h3>👨‍🏫 Accès direct au tableau de bord</h3>
-        <p>Quand vous êtes sur <code>orga.pix.fr/dashboard</code>, le popup de l’extension affiche un bouton "Tableau de bord prof". Un clic ouvre une interface dédiée.</p>
+<nav id="navbar">
+    <a class="nav-brand" href="#">
+        <img src="assets/icon_prof.png" alt="PixHelp Prof">
+        PixHelp
+        <span class="nav-badge">Prof</span>
+    </a>
+    <div class="nav-links">
+        <a href="#features">Fonctionnalités</a>
+        <a href="#philosophy">Philosophie</a>
+        <a href="#install">Installation</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/maxlware-fr/PixHelp" class="nav-dl" target="_blank">⬇ Télécharger</a>
     </div>
-</div>
+</nav>
 
-<div class="feature">
-    <img src="assets/dashboard.png" alt="Dashboard">
-    <div class="feature-text">
-        <h3>📊 Visualisation de la session</h3>
-        <p>Consultez la session active, la liste des élèves avec leur statut (actif/inactif) et leur progression. Exportez les données en CSV.</p>
+<section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+        <div class="hero-pill">
+            <span class="ff-dot">PixHelp</span>
+            Extension dédiée aux enseignants
+        </div>
+        <h1>L'assistant pédagogique<br>pour <em>Pix</em> en classe.</h1>
+        <p>PixHelp Prof aide les enseignants à accompagner leurs élèves sur Pix. Analyse des exercices, suggestions d'explications, codes de sessions — tout depuis le navigateur.</p>
+        <div class="hero-btns">
+            <a href="https://github.com/maxlware-fr/PixHelp" class="btn btn-green" target="_blank">⬇ Télécharger pour Firefox</a>
+            <a href="#features" class="btn btn-outline">Découvrir les fonctionnalités</a>
+        </div>
     </div>
-</div>
-
-<div class="feature">
-    <img src="assets/msg.png" alt="Actions">
-    <div class="feature-text">
-        <h3>✉️ Actions rapides</h3>
-        <p>Envoyez un message à tous les élèves, ouvrez Pix Orga directement depuis le tableau de bord.</p>
+    <div class="hero-mockup">
+        <div class="browser-window">
+            <div class="browser-bar">
+                <div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div>
+                <div class="browser-url">
+                    <span class="ff-tag">PixHelp</span>
+                    https://orga.pix.fr/campagnes/... — PixHelp Prof actif
+                </div>
+            </div>
+            <div class="browser-body" style="flex-direction:column;gap:16px;padding:28px 32px;align-items:flex-start;">
+                <div style="width:100%;background:white;border-radius:12px;border:1px solid var(--border);padding:16px 18px;box-shadow:0 3px 14px rgba(0,0,0,0.06);">
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+                        <div style="font-family:'Cabinet Grotesk',sans-serif;font-size:0.82rem;font-weight:800;color:var(--text-dark);">Session en cours</div>
+                        <div style="background:#e6f9f0;color:#0f8a55;font-size:0.68rem;font-weight:700;padding:2px 8px;border-radius:100px;">● Actif</div>
+                    </div>
+                    <div style="background:#0c1f14;color:#3dd68c;border-radius:8px;padding:10px 14px;font-family:monospace;font-size:1.4rem;font-weight:700;letter-spacing:0.2em;text-align:center;">C4-X7-K2</div>
+                    <div style="text-align:center;font-size:0.68rem;color:var(--text-muted);margin-top:6px;">12 élèves connectés</div>
+                </div>
+                <div style="width:100%;background:white;border-radius:12px;border:1px solid var(--border);padding:16px 18px;box-shadow:0 3px 14px rgba(0,0,0,0.06);">
+                    <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:8px;">Analyse de l'exercice</div>
+                    <div style="font-size:0.78rem;color:var(--text-dark);line-height:1.5;border-left:3px solid var(--accent);padding-left:10px;margin-bottom:10px;">Identifier les composants d'une URL selon le protocole HTTP.</div>
+                    <div style="background:rgba(29,170,107,0.08);border:1px solid rgba(29,170,107,0.2);border-radius:8px;padding:8px 10px;font-size:0.74rem;color:var(--text-dark);line-height:1.5;">💡 Suggérer l'analogie avec une adresse postale : protocole = moyen de transport, domaine = ville...</div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 
-<hr>
+<section class="section forwho-section" id="features">
+    <div class="section-inner">
+        <div class="section-header center">
+            <div class="eyebrow">Pour qui ?</div>
+            <h2 class="section-title">Conçu pour accompagner,<br>pas pour remplacer</h2>
+            <p class="section-sub">PixHelp Prof est un outil d'assistance pédagogique. Il clarifie, structure et suggère — le jugement reste toujours celui de l'enseignant.</p>
+        </div>
+        <div class="forwho-grid">
+            <div class="forwho-card">
+                <div class="forwho-ico ico-teal">👩‍🏫</div>
+                <div>
+                    <h3>Enseignants Pix en classe</h3>
+                    <p>Vous guidez des élèves sur les activités Pix et cherchez des explications claires à portée de main, sans quitter votre navigateur.</p>
+                </div>
+            </div>
+            <div class="forwho-card">
+                <div class="forwho-ico ico-blue">🖥️</div>
+                <div>
+                    <h3>Formateurs numériques</h3>
+                    <p>Vous accompagnez des groupes dans la certification Pix et avez besoin d'un outil rapide pour analyser et contextualiser les exercices.</p>
+                </div>
+            </div>
+            <div class="forwho-card">
+                <div class="forwho-ico ico-amber">📊</div>
+                <div>
+                    <h3>Référents pédagogiques</h3>
+                    <p>Vous supervisez la progression de plusieurs classes et souhaitez un outil léger pour suivre les sessions sans infrastructure lourde.</p>
+                </div>
+            </div>
+            <div class="forwho-card">
+                <div class="forwho-ico ico-purple">🧑‍💻</div>
+                <div>
+                    <h3>Professeurs documentalistes</h3>
+                    <p>Vous intégrez Pix dans vos séances d'information-documentation et cherchez à enrichir vos explications sur la culture numérique.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<h2>📥 Installation (2 minutes)</h2>
-<div class="install">
-    <ol>
-        <li>Téléchargez le <strong><a href="https://github.com/maxlware-fr/PixHelp/releases" target="_blank">fichier ZIP</a></strong> depuis GitHub.</li>
-        <li>Décompressez le dossier.</li>
-        <li><strong>Chrome / Edge :</strong> allez dans <code>chrome://extensions/</code> → activez le mode développeur → "Charger l’extension non empaquetée" et sélectionnez le dossier.</li>
-        <li><strong>Firefox :</strong> allez dans <code>about:debugging</code> → "Ce Firefox" → "Charger un module complémentaire temporaire" → choisissez le fichier <code>manifest.json</code>.</li>
-        <li>Connectez-vous à Pix Orga et allez sur <code>https://orga.pix.fr/dashboard</code>.</li>
-        <li>Cliquez sur l'icône PixHelp dans la barre d’extensions : le bouton "Tableau de bord prof" apparaît.</li>
-    </ol>
-</div>
+<section class="section features-section">
+    <div class="section-inner">
+        <div class="section-header">
+            <div class="eyebrow">Fonctionnalités</div>
+            <h2 class="section-title">Tout ce dont un enseignant<br>a besoin sur Pix</h2>
+            <p class="section-sub">Six fonctionnalités pensées pour le terrain, directement intégrées dans Firefox.</p>
+        </div>
+        <div class="feat-grid">
 
-<div style="margin: 20px 0;">
-    <a href="https://github.com/maxlware-fr/PixHelp" class="btn btn-github" target="_blank">GitHub</a>
-    <a href="https://orga.pix.fr" class="btn" target="_blank">Pix Orga</a>
-    <a href="https://github.com/maxlware-fr/PixHelp/issues" class="btn" target="_blank">Signaler un bug</a>
-</div>
+            <div class="feat-card">
+                <div class="feat-preview">
+                    <div class="ui">
+                        <div class="ui-label">Code de session</div>
+                        <div class="ui-code">C4-X7-K2</div>
+                        <div class="ui-code-sub">Partagez ce code à vos élèves • 12 connectés</div>
+                    </div>
+                </div>
+                <div class="feat-body">
+                    <h3>🔑 Codes de sessions</h3>
+                    <p>Générez et gérez des codes de sessions Pix directement depuis l'extension. Vos élèves rejoignent la session en quelques secondes.</p>
+                </div>
+            </div>
 
-<div style="background: #fff8e7; padding: 10px; border-radius: 8px; margin: 20px 0;">
-    ⚠️ Cette extension n’est pas officielle. Elle est conçue pour aider les enseignants dans le cadre de leur mission. Les données affichées sont simulées dans cette version et seront prochainement connectées à l’API Pix.
-</div>
+            <div class="feat-card">
+                <div class="feat-preview">
+                    <div class="ui">
+                        <div class="ui-label">Analyse de l'exercice</div>
+                        <div class="ui-exo">Identifier le type de licence d'un fichier partagé en ligne.</div>
+                        <div class="ui-analysis">
+                            <div class="ui-analysis-item"><span>▸</span> Compétence : Droits et licences (niveau 2)</div>
+                            <div class="ui-analysis-item"><span>▸</span> Notion clé : licences Creative Commons</div>
+                            <div class="ui-analysis-item"><span>▸</span> Difficulté estimée : intermédiaire</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feat-body">
+                    <h3>🔍 Analyse des consignes</h3>
+                    <p>PixHelp Prof décompose automatiquement chaque exercice Pix : compétence ciblée, notions clés, niveau de difficulté estimé.</p>
+                </div>
+            </div>
+
+            <div class="feat-card">
+                <div class="feat-preview">
+                    <div class="ui">
+                        <div class="ui-label">Aide pédagogique</div>
+                        <div class="ui-suggest">Comparer les licences à des "règles du jeu" : certaines permettent de modifier, d'autres non.</div>
+                        <div class="ui-suggest">Partir d'un exemple concret : une photo sur Wikipedia et ses droits d'utilisation.</div>
+                    </div>
+                </div>
+                <div class="feat-body">
+                    <h3>💡 Aide à la compréhension</h3>
+                    <p>Des pistes pédagogiques concrètes pour chaque activité. Analogies, exemples du quotidien, reformulations adaptées au niveau de vos élèves.</p>
+                </div>
+            </div>
+
+            <div class="feat-card">
+                <div class="feat-preview">
+                    <div class="ui">
+                        <div class="ui-row">
+                            <div class="ui-label" style="margin:0">Suggestions d'explication</div>
+                            <div class="ui-tag">3 disponibles</div>
+                        </div>
+                        <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px;">
+                            <div style="background:var(--bg-light);border-radius:8px;padding:8px 10px;font-size:0.74rem;color:var(--text-dark);border:1px solid var(--border);">🎓 Pour les débutants : analogie du facteur</div>
+                            <div style="background:var(--accent-soft);border:1px solid rgba(29,170,107,0.2);border-radius:8px;padding:8px 10px;font-size:0.74rem;color:var(--accent-mid);">✓ Niveau intermédiaire : protocoles réseau</div>
+                            <div style="background:var(--bg-light);border-radius:8px;padding:8px 10px;font-size:0.74rem;color:var(--text-dark);border:1px solid var(--border);">🚀 Avancé : structure TCP/IP</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feat-body">
+                    <h3>🗣️ Suggestions adaptées</h3>
+                    <p>Plusieurs niveaux d'explication proposés par exercice : du débutant à l'avancé. Choisissez ce qui correspond à votre classe.</p>
+                </div>
+            </div>
+
+            <div class="feat-card">
+                <div class="feat-preview">
+                    <div class="ui">
+                        <div class="ui-label">Progression de la session</div>
+                        <div class="ui-student-row">
+                            <div class="ui-avatar" style="background:#1daa6b;">AL</div>
+                            <div class="ui-student-name">Alice L.</div>
+                            <div style="font-size:0.7rem;font-weight:700;color:var(--accent);">8/10</div>
+                        </div>
+                        <div class="ui-student-row">
+                            <div class="ui-avatar" style="background:#2d82db;">TM</div>
+                            <div class="ui-student-name">Thomas M.</div>
+                            <div style="font-size:0.7rem;font-weight:700;color:#e0973a;">5/10</div>
+                        </div>
+                        <div class="ui-student-row" style="border:none">
+                            <div class="ui-avatar" style="background:#8a5bb6;">CR</div>
+                            <div class="ui-student-name">Chloé R.</div>
+                            <div style="font-size:0.7rem;font-weight:700;color:#c03a3a;">3/10</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feat-body">
+                    <h3>📊 Suivi de progression</h3>
+                    <p>Suivez la progression de vos élèves en temps réel pendant la session. Identifiez rapidement ceux qui ont besoin d'aide.</p>
+                </div>
+            </div>
+
+            <div class="feat-card">
+                <div class="feat-preview">
+                    <div class="ui" style="text-align:center;">
+                        <div style="font-size:2rem;margin-bottom:8px;">🦊</div>
+                        <div class="ui-label" style="text-align:center;">Extension Firefox native</div>
+                        <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
+                            <div style="background:var(--accent-soft);color:var(--accent-mid);font-size:0.68rem;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid rgba(29,170,107,0.2);">Manifest V3</div>
+                            <div style="background:var(--accent-soft);color:var(--accent-mid);font-size:0.68rem;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid rgba(29,170,107,0.2);">Popup intégrée</div>
+                            <div style="background:var(--accent-soft);color:var(--accent-mid);font-size:0.68rem;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid rgba(29,170,107,0.2);">0 configuration</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feat-body">
+                    <h3>⚡ Interface simple &amp; rapide</h3>
+                    <p>Popup légère accessible en un clic depuis la barre Firefox. Aucune configuration complexe, opérationnelle en 2 minutes.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="security-section">
+    <div class="sec-inner">
+        <div class="section-header center">
+            <div class="eyebrow">Sécurité &amp; vie privée</div>
+            <h2 class="section-title">Local et <span style="color:var(--accent-glow)">sécurisé</span> par conception</h2>
+            <p class="section-sub">PixHelp Prof fonctionne en local dans Firefox et utilise un <span class="sec-hl">serveur sécurisé uniquement pour la gestion des sessions</span>. Vos données élèves ne quittent pas le contexte de la session.</p>
+        </div>
+        <div class="sec-grid">
+            <div class="sec-card">
+                <h4>📱 Traitement local</h4>
+                <p>L'analyse des exercices et les suggestions pédagogiques sont générées directement dans le navigateur. Aucune consigne ni contenu Pix n'est envoyé à un serveur externe.</p>
+            </div>
+            <div class="sec-card">
+                <h4>🔐 Sessions sécurisées</h4>
+                <p>La fonctionnalité de sessions utilise un serveur sécurisé dédié uniquement à la gestion des codes. Aucune donnée personnelle d'élève n'est stockée.</p>
+            </div>
+            <div class="sec-card">
+                <h4>🔓 Open source</h4>
+                <p>Le code source est entièrement disponible sur GitHub. Auditez, inspectez et contribuez. La transparence est une exigence non négociable.</p>
+            </div>
+            <div class="sec-card">
+                <h4>🚫 Aucun pistage</h4>
+                <p>Pas de publicité, pas de télémétrie, pas de collecte de données d'usage. PixHelp Prof est un outil éducatif, pas un service commercial.</p>
+            </div>
+        </div>
+        <div class="big-claim">
+            <h2>Vos élèves restent vos élèves.</h2>
+            <p>PixHelp Prof ne centralise aucune donnée personnelle. Les codes de sessions expirent automatiquement et ne contiennent aucune information nominative.</p>
+        </div>
+    </div>
+</section>
+
+<section class="philosophy-section" id="philosophy">
+    <div class="phil-inner">
+        <div class="phil-text">
+            <div class="eyebrow">Notre philosophie</div>
+            <h2 class="section-title">Un assistant,<br>pas un substitut.</h2>
+            <p class="section-sub">PixHelp Prof est conçu avec une conviction claire : la pédagogie reste l'affaire de l'enseignant. L'outil n'impose rien, ne décide rien.</p>
+            <div class="phil-points">
+                <div class="phil-point">
+                    <div class="dot"></div>
+                    <p>Il clarifie les exercices pour que vous puissiez expliquer avec plus d'assurance, sans devoir chercher vous-même.</p>
+                </div>
+                <div class="phil-point">
+                    <div class="dot"></div>
+                    <p>Il suggère des pistes pédagogiques, mais c'est vous qui choisissez ce qui est adapté à votre classe.</p>
+                </div>
+                <div class="phil-point">
+                    <div class="dot"></div>
+                    <p>Il s'efface dans l'interface de Firefox, disponible quand vous en avez besoin, invisible sinon.</p>
+                </div>
+                <div class="phil-point">
+                    <div class="dot"></div>
+                    <p>Il est conçu pour le terrain : rapide, simple, sans courbe d'apprentissage.</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="phil-quote">
+                <p>PixHelp Prof ne remplace pas le jugement pédagogique de l'enseignant. L'outil sert uniquement d'assistant pour clarifier et structurer l'aide apportée aux élèves.</p>
+                <footer>— Principe de conception de PixHelp Prof</footer>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="install-section" id="install">
+    <div class="install-inner">
+        <div class="section-header">
+            <div class="eyebrow">📥 Installation</div>
+            <h2 class="section-title">Disponible sur Firefox</h2>
+            <div class="ff-only">🦊 Uniquement compatible avec Firefox</div>
+            <p class="section-sub">PixHelp Prof est une extension Firefox. Voici comment l'installer en 4 étapes.</p>
+        </div>
+        <div class="steps-row">
+            <div class="steps-line"></div>
+            <div class="step">
+                <div class="step-num">1</div>
+                <h4>Télécharger le ZIP</h4>
+                <p>Récupère la dernière version depuis les <a href="https://github.com/maxlware-fr/PixHelp" target="_blank" style="color:var(--accent)">releases GitHub</a> et décompresse le dossier.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h4>Ouvrir Firefox</h4>
+                <p>Accède à <code>about:debugging</code> dans la barre d'adresse de Firefox.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h4>"Ce Firefox"</h4>
+                <p>Clique sur l'onglet "Ce Firefox" dans le panneau de débogage à gauche.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <h4>Charger le module</h4>
+                <p>Clique sur "Charger un module complémentaire temporaire" et sélectionne le fichier <code>manifest.json</code>.</p>
+            </div>
+        </div>
+        <div class="install-ctas">
+            <a href="https://github.com/maxlware-fr/PixHelp" class="btn btn-solid" target="_blank">⬇ Télécharger PixHelp Prof</a>
+            <a href="https://github.com/maxlware-fr/PixHelp" class="btn btn-dark-pill" target="_blank">★ GitHub</a>
+            <a href="https://github.com/maxlware-fr/PixHelp/issues" class="btn btn-ghost-pill" target="_blank">🐛 Signaler un bug</a>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section" id="faq">
+    <div class="faq-inner">
+        <div class="eyebrow">FAQ</div>
+        <h2 class="section-title">Questions fréquentes</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q">PixHelp Prof fonctionne-t-il sur Chrome ou Edge ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Non. PixHelp Prof est exclusivement disponible pour Firefox.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Les données de mes élèves sont-elles transmises quelque part ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Non. L'analyse des exercices se fait entièrement en local. Seule la fonctionnalité de sessions utilise un serveur sécurisé dédié, qui ne stocke que les codes temporaires — aucune donnée personnelle d'élève.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Quelle est la différence avec PixHelp (pour élèves) ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">PixHelp est destiné aux élèves et les aide à trouver les réponses. PixHelp Prof est destiné aux enseignants : il analyse les exercices, propose des pistes pédagogiques et gère les sessions de classe. Les deux outils sont complémentaires mais distincts.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Est-ce gratuit ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Oui, entièrement gratuit et open-source. Le code source est disponible sur GitHub. Pas d'abonnement, pas de compte obligatoire.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Est-ce une extension officielle de Pix ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Non. PixHelp Prof est un projet indépendant, non affilié à Pix (GIP Pix). Il est conçu pour fonctionner avec la plateforme Pix sans en faire partie officiellement.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Puis-je utiliser PixHelp Prof pendant une certification officielle Pix ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">PixHelp Prof est conçu pour l'accompagnement pédagogique en classe, pas pour les certifications officielles. Comme toute ressource externe, son usage lors de certifications dépend du règlement en vigueur dans votre établissement.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-box">
+        <div class="cta-content">
+            <div class="eyebrow">Gratuit &amp; open-source</div>
+            <h2 class="section-title">Pas un simple outil,<br>un <em>vrai allié pédagogique.</em></h2>
+            <p>Conçu par des développeurs pour les enseignants — parce que accompagner des élèves sur Pix mérite un vrai support.</p>
+            <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://github.com/maxlware-fr/PixHelp" class="btn btn-green" target="_blank">⬇ Télécharger pour Firefox</a>
+                <a href="https://pix.fr" class="btn btn-outline" target="_blank">Site officiel Pix →</a>
+            </div>
+            <div class="disclaimer-pill">⚠️ Extension non officielle — non affiliée à Pix (1024pix)</div>
+        </div>
+    </div>
+</section>
 
 <footer>
-    PixHelp Prof – Assistant enseignant pour Pix • Développé pour l’éducation<br>
-    <a href="#">Mentions légales</a> | <a href="https://maxlware.com/fr-fr/contact">Contact</a>
+    <div class="footer-inner">
+        <div>
+            <div class="f-brand-name"><img src="assets/icon.png" alt="">PixHelp Prof</div>
+            <div class="f-brand-sub">Pour les enseignants</div>
+            <p class="f-desc">Assistant pédagogique non officiel pour la plateforme Pix. Conçu pour faciliter l'accompagnement des élèves en classe numérique.<br><br>Développé par <a href="https://maxlware.com?utm_source=pixhelp-prof" style="color:var(--accent);text-decoration:none">maxlware</a></p>
+        </div>
+        <div class="f-col">
+            <h5>Extension</h5>
+            <a href="https://github.com/maxlware-fr/PixHelp" target="_blank">Télécharger</a>
+            <a href="https://github.com/maxlware-fr/PixHelp" target="_blank">GitHub</a>
+            <a href="https://github.com/maxlware-fr/PixHelp/issues" target="_blank">Signaler un bug</a>
+        </div>
+        <div class="f-col">
+            <h5>Liens</h5>
+            <a href="index.html">PixHelp (élèves)</a>
+            <a href="https://pix.fr" target="_blank">Site officiel Pix</a>
+            <a href="https://maxlware.com?utm_source=pixhelp-prof" target="_blank">maxlware.com</a>
+        </div>
+        <div class="f-col">
+            <h5>Légal</h5>
+            <a href="terms.html">Mentions légales</a>
+            <a href="terms.html">Confidentialité</a>
+            <a href="https://maxlware.com/fr-fr/contact">Contact</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 PixHelp Prof — Projet open-source non affilié à Pix</p>
+        <span class="badge-noff">Extension non officielle • Firefox uniquement</span>
+    </div>
 </footer>
 
+<script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+</script>
 </body>
 </html>
