@@ -1,68 +1,279 @@
+<!-- IN TESTING -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixHelp – Assistant pour Pix</title>
-    <link rel="stylesheet" href="assets/style.css">
     <link rel="icon" href="assets/icon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-<img class="logo" src="assets/icon.png" alt="PixHelp">
-<h1>PixHelp</h1>
-<div class="sub">Aide toi à réussir sur Pix avec PixHelp.</div>
-
-<hr>
-
-<div class="feature">
-    <img src="assets/help.png" alt="Bouton dans la navigation">
-    <div class="feature-text">
-        <h3>✅ Aide sur les questions</h3>
-        <p>PixHelp vous aide à trouver les réponses aux questions de manière efficace.</p>
+<nav id="navbar">
+    <a class="nav-brand" href="#">
+        <img src="assets/icon.png" alt="PixHelp">
+        PixHelp
+    </a>
+    <div class="nav-links">
+        <a href="#features">Fonctionnalités</a>
+        <a href="#install">Installation</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/maxlware-fr/PixHelp/releases" class="nav-dl" target="_blank">⬇ Télécharger l'extension</a>
     </div>
-</div>
+</nav>
 
-<div class="feature">
-    <img src="assets/settings.png" alt="Paramètres">
-    <div class="feature-text">
-        <h3>⚙️ Paramètres personnalisables</h3>
-        <p>Activez ou désactivez l’extension en un clic. Interface simple avec onglets (Infos / Options).</p>
+<section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+        <div class="hero-icon">
+            <img src="assets/icon.png" alt="PixHelp">
+        </div>
+        <h1>Ton assistant pour<br>réussir sur <em>Pix.</em></h1>
+        <p>PixHelp est une extension navigateur libre et gratuite qui t'aide à progresser sur Pix, pour connaitre mieux le monde numérique.</p>
+        <div class="hero-btns">
+            <a href="https://github.com/maxlware-fr/PixHelp/releases" class="btn btn-primary" target="_blank">⬇ Télécharger gratuitement</a>
+            <a href="https://github.com/maxlware-fr/PixHelp" class="btn btn-outline" target="_blank">&lt;/&gt; Contribuer sur GitHub</a>
+        </div>
     </div>
-</div>
-
-<div class="feature">
-    <img src="assets/blocked.png" alt="Blocage certification">
-    <div class="feature-text">
-        <h3>🚫 Protection certification</h3>
-        <p>Sur la page <code>/certifications</code>, la section est automatiquement floutée avec un message d’avertissement. L’extension se désactive automatiquement dans ce contexte.</p>
+    <div class="hero-mockup">
+        <div class="browser-window">
+            <div class="browser-bar">
+                <div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div>
+                <div class="browser-url">https://app.pix.fr/assessments/123456/challenges/rec...</div>
+            </div>
+            <div class="browser-body">
+                <img src="assets/help.png" alt="PixHelp en action">
+            </div>
+        </div>
     </div>
-</div>
+</section>
 
-<hr>
+<section class="section features-section" id="features">
+    <div class="section-inner">
+        <div class="section-header center">
+            <div class="eyebrow">Fonctionnalités</div>
+            <h2 class="section-title">Conçu avec soin<br>et attention au détail</h2>
+            <p class="section-sub">Chaque fonctionnalité de PixHelp est pensée pour t'aider à progresser sur Pix, dans le respect des règles.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feat-card">
+                <div class="feat-card-preview">
+                    <div class="ui-preview">
+                        <div class="ui-label">Question Pix</div>
+                        <div class="ui-q">Quel format est utilisé pour structurer des données échangées via une API ?</div>
+                        <div class="ui-choices">
+                            <div class="ui-choice">XML</div>
+                            <div class="ui-choice correct">✓ JSON</div>
+                            <div class="ui-choice">CSV</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feat-card-body">
+                    <h3>✅ Aide sur les questions</h3>
+                    <p>PixHelp t'aide à trouver et comprendre les réponses aux questions Pix. Fini les blocages, place à la compréhension.</p>
+                </div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-card-preview">
+                    <div class="ui-preview">
+                        <div class="ui-toggle">
+                            <span>Extension active</span>
+                            <div class="toggle-pill"></div>
+                        </div>
+                        <div class="ui-opt active">📋 Infos</div>
+                        <div class="ui-opt" style="color:var(--text-muted)">⚙️ Options</div>
+                    </div>
+                </div>
+                <div class="feat-card-body">
+                    <h3>⚙️ Paramètres personnalisables</h3>
+                    <p>Active ou désactive l'extension en un clic. Interface épurée avec onglets Infos / Options pour un contrôle total.</p>
+                </div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-card-preview">
+                    <div class="ui-preview">
+                        <div class="ui-badge">🚫 Certification détectée</div>
+                        <div class="ui-blur-box">
+                            <div class="ui-blur-text">Lorem ipsum dolor sit amet certification content blocked...</div>
+                            <div class="ui-warn">PixHelp désactivé automatiquement</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feat-card-body">
+                    <h3>🚫 Protection certification</h3>
+                    <p>Sur les pages <code style="background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:5px;">/certifications</code>, PixHelp se désactive et floute automatiquement la section (voir terms).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<h2>📥 Installation (2 minutes)</h2>
-<div class="install">
-    <ol>
-        <li>Téléchargez le <strong><a href="https://github.com/maxlware-fr/PixHelp/releases" target="_blank">fichier ZIP</a></strong> depuis GitHub.</li>
-        <li>Décompressez le dossier.</li>
-        <li><strong>Chrome / Edge :</strong> allez dans <code>chrome://extensions/</code> → activez le mode développeur → "Charger l’extension non empaquetée" et sélectionnez le dossier.</li>
-        <li><strong>Firefox :</strong> allez dans <code>about:debugging</code> → "Ce Firefox" → "Charger un module complémentaire temporaire" → choisissez le fichier <code>manifest.json</code>.</li>
-    </ol>
-</div>
+<section class="privacy-section">
+    <div class="privacy-inner">
+        <div class="section-header center">
+            <div class="eyebrow">Vie privée &amp; sécurité</div>
+            <h2 class="section-title">Sécurisé et respectueux<br>de ta vie privée</h2>
+            <p class="section-sub">PixHelp ne transmet aucune donnée. Tout fonctionne <span class="privacy-hl">directement dans ton navigateur</span>, sans serveur, sans compte, sans pistage.</p>
+        </div>
+        <div class="privacy-grid">
+            <div class="p-item">
+                <div class="p-ico ico-b">📱</div>
+                <h4>Données locales</h4>
+                <p>Aucune information n'est envoyée à un serveur. Tout reste sur ton appareil, en toute sécurité sauf avec l'utilisation de PixHelp Prof.</p>
+            </div>
+            <div class="p-item">
+                <div class="p-ico ico-g">🔓</div>
+                <h4>Logiciel libre</h4>
+                <p>Le code source est ouvert sur GitHub. Inspecte, audite et contribue à PixHelp librement.</p>
+            </div>
+            <div class="p-item">
+                <div class="p-ico ico-p">🔒</div>
+                <h4>Aucune collecte</h4>
+                <p>Pas de publicité, pas de télémétrie, pas de collecte de données. Jamais.</p>
+            </div>
+            <div class="p-item">
+                <div class="p-ico ico-o">⚡</div>
+                <h4>Léger &amp; rapide</h4>
+                <p>Extension minimaliste qui n'alourdit pas ton navigateur ni le chargement des pages Pix (l'extension fait moins de 1 Mo).</p>
+            </div>
+        </div>
+        <div class="big-claim">
+            <h2>On ne connaît pas tes données.</h2>
+            <p>PixHelp n'a aucune base de données, aucun compte utilisateur. Ton utilisation t'appartient entièrement.</p>
+        </div>
+    </div>
+</section>
 
-<div style="margin: 20px 0;">
-    <a href="https://github.com/maxlware-fr/PixHelp/releases" class="btn btn-github" target="_blank">GitHub</a>
-    <a href="https://pix.fr" class="btn" target="_blank">Site Pix</a>
-    <a href="https://github.com/maxlware-fr/PixHelp/issues" class="btn" target="_blank">Signaler un bug</a>
-</div>
+<section class="install-section" id="install">
+    <div class="install-inner">
+        <div class="section-header">
+            <div class="eyebrow">📥 Installation</div>
+            <h2 class="section-title">Prêt en 2 minutes</h2>
+            <p class="section-sub">Aucune compétence technique requise. Suis ces 4 étapes simples.</p>
+        </div>
+        <div class="steps-row">
+            <div class="steps-line"></div>
+            <div class="step">
+                <div class="step-num">1</div>
+                <h4>Télécharger le ZIP</h4>
+                <p>Récupère la dernière version depuis les <a href="https://github.com/maxlware-fr/PixHelp/releases" target="_blank" style="color:var(--accent)">releases GitHub</a> et décompresse le dossier.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h4>Ouvrir les extensions</h4>
+                <p>Va sur <code>chrome://extensions/</code> ou <code>about:debugging</code> selon ton navigateur.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h4>Mode développeur</h4>
+                <p>Active le <strong>mode développeur</strong> en haut à droite (Chrome/Edge) ou via "Ce Firefox".</p>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <h4>Charger le dossier</h4>
+                <p>Clique sur "Charger l'extension non empaquetée" et sélectionne le dossier décompressé.</p>
+            </div>
+        </div>
+        <div class="browsers-row">
+            <div class="browser-pill"><div class="em">🟡</div><div><strong>Google Chrome</strong><span>chrome://extensions/</span></div></div>
+            <div class="browser-pill"><div class="em">🔵</div><div><strong>Microsoft Edge</strong><span>edge://extensions/</span></div></div>
+            <div class="browser-pill"><div class="em">🦊</div><div><strong>Firefox</strong><span>about:debugging</span></div></div>
+        </div>
+        <div class="install-ctas">
+            <a href="https://github.com/maxlware-fr/PixHelp/releases" class="btn btn-solid" target="_blank">⬇ Télécharger PixHelp</a>
+            <a href="https://github.com/maxlware-fr/PixHelp" class="btn btn-dark-pill" target="_blank">★ Voir sur GitHub</a>
+            <a href="https://github.com/maxlware-fr/PixHelp/issues" class="btn btn-ghost-pill" target="_blank">🐛 Signaler un bug</a>
+        </div>
+    </div>
+</section>
 
-<div style="background: #fff8e7; padding: 10px; border-radius: 8px; margin: 20px 0;">
-    ⚠️ Cette extension n’est pas officielle. Elle est conçue pour aider dans le cadre autorisé et bloque automatiquement toute utilisation pendant les certifications.
-</div>
+<section class="faq-section" id="faq">
+    <div class="faq-inner">
+        <div class="eyebrow">FAQ</div>
+        <h2 class="section-title">Questions fréquentes</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q">PixHelp est-il gratuit ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Oui, PixHelp est entièrement gratuit et open-source. Pas d'abonnement, pas de version premium. Le code source est accessible sur GitHub.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">L'extension fonctionne-t-elle sur Firefox ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Oui ! PixHelp est compatible avec Chrome, Microsoft Edge et Firefox grâce à Manifest V3. Chaque navigateur a sa propre procédure détaillée dans la section installation.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Est-ce que PixHelp collecte mes données ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Non. PixHelp n'a aucun serveur ni base de données. Tout fonctionne localement dans ton navigateur. Aucune donnée ne quitte ton appareil. Sauf avec l'utilisation de PixHelp Prof.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">L'extension se désactive-t-elle pendant les certifications ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Oui, c'est automatique. Sur toutes les pages <code>/certifications</code> de Pix, PixHelp détecte le contexte, se désactive et floute la section avec un avertissement visible.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Comment contribuer ou signaler un bug ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Ouvre une issue ou une pull request sur GitHub. Les contributions sont les bienvenues !</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-box">
+        <div class="eyebrow">Gratuit &amp; open-source</div>
+        <h2 class="section-title">Pas une simple extension,<br>mais une <em>aide pour apprendre.</em></h2>
+        <p>PixHelp est né de la volonté d'aider les élèves à progresser sur Pix, dans le respect de l'intégrité des certifications officielles.</p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+            <a href="https://github.com/maxlware-fr/PixHelp/releases" class="btn btn-solid" target="_blank">⬇ Télécharger gratuitement</a>
+            <a href="https://pix.fr" class="btn btn-ghost-pill" target="_blank">Aller sur Pix →</a>
+        </div>
+        <div class="disclaimer-pill">⚠️ Extension non officielle — non affiliée à Pix (1024pix)</div>
+    </div>
+</section>
 
 <footer>
-    PixHelp – Assistant non officiel • Développé pour l’éducation<br>
-    <a href="#">Mentions légales</a> | <a href="https://maxlwarecom/fr-fr/contact">Contact</a>
+    <div class="footer-inner">
+        <div>
+            <div class="f-brand-name"><img src="assets/icon.png" alt="PixHelp">PixHelp</div>
+            <p class="f-desc">Assistant non officiel pour la plateforme Pix. Conçu pour aider les élèves à progresser dans leurs compétences numériques.<br><br>Développé par <a href="https://maxlware.com?utm_source=pixhelp" style="color:var(--accent);text-decoration:none">maxlware</a></p>
+        </div>
+        <div class="f-col">
+            <h5>Ressources</h5>
+            <a href="https://github.com/maxlware-fr/PixHelp/releases" target="_blank">Télécharger</a>
+            <a href="https://github.com/maxlware-fr/PixHelp" target="_blank">GitHub</a>
+            <a href="https://github.com/maxlware-fr/PixHelp/issues" target="_blank">Signaler un bug</a>
+        </div>
+        <div class="f-col">
+            <h5>Liens utiles</h5>
+            <a href="https://pix.fr" target="_blank">Site officiel Pix</a>
+            <a href="https://maxlware.com?utm_source=pixhelp" target="_blank">maxlware.com</a>
+        </div>
+        <div class="f-col">
+            <h5>Légal</h5>
+            <a href="terms.html">Mentions légales</a>
+            <a href="terms.html">Confidentialité</a>
+            <a href="https://maxlware.com/fr-fr/contact">Contact</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 PixHelp — Projet open-source non affilié à Pix</p>
+        <span class="badge-noff">Extension non officielle</span>
+    </div>
 </footer>
+
+<script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+</script>
+</body>
 </html>

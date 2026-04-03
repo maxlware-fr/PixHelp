@@ -1,0 +1,81 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f9fafc;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.2rem;
+            color: #2c4e7a;
+        }
+        .logo {
+            width: 64px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .sub {
+            color: #4a627a;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: #3a6ea5;
+            border-left: 4px solid #3a6ea5;
+            padding-left: 15px;
+        }
+        h3 {
+            font-size: 1.2rem;
+            margin: 1.2rem 0 0.5rem;
+            color: #2c4e7a;
+        }
+        p, li {
+            margin-bottom: 0.8rem;
+        }
+        ul, ol {
+            margin: 0.5rem 0 1rem 2rem;
+        }
+        .legal-box {
+            background: #eef2f7;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6c86a3;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+        }
+        .btn-back {
+            display: inline-block;
+            background: #3a6ea5;
+            color: white;
+            padding: 6px 12px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 700px) {
+            body {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
