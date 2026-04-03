@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixHelp – Conditions d'utilisation et confidentialité</title>
+    <link rel="stylesheet" href="assets/style-terms.css">
+    <link rel="icon" href="assets/icon.png">
+</head>
+<body>
+    <a href="index.html" class="btn-back">← Retour à l'accueil</a>
+    <img class="logo" src="assets/icon.png" alt="PixHelp">
+    <h1>Conditions d'utilisation & Politique de confidentialité</h1>
+    <div class="sub">Dernière mise à jour : 3 avril 2026</div>
+
+    <p>Bienvenue sur PixHelp. Cette extension navigateur a été développée dans un cadre éducatif pour aider les utilisateurs de la plateforme Pix à trouver des ressources pédagogiques, sans jamais fournir de réponses toutes faites ni contourner les règles des certifications. L'utilisation de PixHelp implique l'acceptation pleine et entière des présentes conditions.</p>
+
+    <h2>1. Conditions d'utilisation</h2>
+    
+    <h3>1.1. Objet et champ d'application</h3>
+    <p>PixHelp est une extension non officielle, conçue pour faciliter la recherche documentaire sur les épreuves Pix en <strong>Mode Libre</strong> uniquement. Elle ne remplace pas le travail personnel de l'élève et ne fournit aucune réponse automatisée. Son utilisation est strictement réservée à un usage pédagogique individuel.</p>
+
+    <h3>1.2. Restrictions d'usage</h3>
+    <ul>
+        <li><strong>Interdiction pendant les certifications</strong> : L'extension détecte automatiquement la page <code>/certifications</code> et bloque son fonctionnement (floutage de la zone de certification). Toute tentative de contournement est interdite et contraire à l'éthique de l'examen. Toute tentative de tricherie à un examen officiel est passible de 5 ans d'interdiction de repassage à tout type d'examen.</li>
+        <li><strong>Mode Focus</strong> : L'assistant de recherche est désactivé en Mode Focus, conformément aux règles de l'épreuve. Un message explicite informe l'utilisateur.</li>
+        <li><strong>Pas de contournement technique</strong> : Il est interdit de modifier le code de l'extension pour supprimer les blocages ou détourner son usage.</li>
+        <li><strong>Respect des droits de Pix</strong> : PixHelp n'altère pas le fonctionnement normal de la plateforme Pix et ne collecte aucune donnée personnelle sans consentement (voir section confidentialité).</li>
+    </ul>
+
+    <h3>1.3. Limitation de responsabilité</h3>
+    <p>Le développeur de PixHelp décline toute responsabilité en cas d'utilisation abusive, de tricherie, ou de non-respect des conditions d'utilisation de Pix. L'extension est fournie "en l'état", sans garantie de disponibilité ou d'exhaustivité des ressources proposées. Les liens vers des sites tiers (NosDevoirs.fr, OpenClassrooms, etc.) sont fournis à titre indicatif ; leur contenu n'engage pas le développeur.</p>
+
+    <h3>1.4. Droit applicable et modification</h3>
+    <p>Les présentes conditions sont régies par le droit français. Le développeur se réserve le droit de modifier ces conditions à tout moment. Les utilisateurs seront informés via la page de l'extension ou le dépôt GitHub.</p>
+
+    <h2>2. Politique de confidentialité</h2>
+
+    <h3>2.1. Principes généraux</h3>
+    <p>PixHelp respecte la vie privée des utilisateurs et applique une collecte de données minimale. Cette politique détaille les traitements de données mis en œuvre par l'extension, en particulier dans le cadre de la fonctionnalité <strong>PixHelp Prof</strong> destinée aux enseignants.</p>
+
+    <h3>2.2. Données traitées pour le suivi de session (PixHelp Prof)</h3>
+    <p>Dans le cadre de la fonctionnalité de suivi de session (permettant à un enseignant de suivre un élève pendant une session d'assistance), certaines informations techniques et pédagogiques peuvent être envoyées vers un serveur sécurisé.</p>
+    <p>Ces données peuvent inclure :</p>
+    <ul>
+        <li>Identifiant de session temporaire (nom, prénom, pseudonyme fourni par l'enseignant ou l'élève).</li>
+        <li>Informations nécessaires au fonctionnement de la session en cours (questions posées, pourcentage de réussite, réponses apportées, identifiant de la session, temps passé).</li>
+        <li>Données liées à l'activité dans Pix durant la session (consultation de ressources, progression).</li>
+    </ul>
+
+    <h3>2.3. Stockage et serveur</h3>
+    <p>Ces informations sont transmises à l'API suivante : <code>https://api.maxlware.com</code>.</p>
+    <p>Les données sont :</p>
+    <ul>
+        <li>utilisées uniquement pendant la durée de la session active ;</li>
+        <li>stockées de manière temporaire sur le serveur ;</li>
+        <li>automatiquement supprimées à la fin de la session.</li>
+    </ul>
+    <p><strong>Aucune donnée n'est conservée de façon permanente après la fin de la session.</strong></p>
+
+    <h3>2.4. Données locales (stockage navigateur)</h3>
+    <p>Indépendamment du serveur, l'extension utilise l'API <code>chrome.storage.sync</code> (ou <code>local</code>) pour stocker uniquement :</p>
+    <ul>
+        <li>Votre préférence d'activation/désactivation de l'extension.</li>
+        <li>(Version Prof) Éventuellement des paramètres de session locaux (non personnels).</li>
+    </ul>
+    <p>Ces données ne sont jamais transmises à un serveur externe (sauf la session explicitement partagée via PixHelp Prof).</p>
+
+    <h3>2.5. Partage des données</h3>
+    <p>Aucune donnée n'est vendue, partagée ou utilisée à des fins publicitaires ou commerciales. Les informations de session ne sont accessibles qu'à l'enseignant et à l'élève concernés pendant la durée de la session. Aucun tiers n'y a accès.</p>
+
+    <h3>2.6. Sécurité</h3>
+    <p>Les échanges avec le serveur <code>https://api.maxlware.com</code> sont effectués de manière sécurisée (HTTPS) afin de protéger les informations transmises pendant la session. Le serveur applique des mesures de sécurité standards (chiffrement, accès restreint, suppression automatique).</p>
+
+    <h3>2.7. Absence de traçage et de cookies</h3>
+    <p>PixHelp n'utilise aucun cookie, aucun pixel espion, aucune solution d'analyse d'audience (Google Analytics, etc.). Les seuls appels réseau sont ceux explicitement liés au fonctionnement de la session Prof (vers l'API) ou aux recherches Google déclenchées par l'utilisateur (ces requêtes sont alors soumises aux conditions de confidentialité de Google).</p>
+
+    <h3>2.8. Permissions demandées – Justification</h3>
+    <ul>
+        <li><code>activeTab</code> et <code>tabs</code> : Pour détecter la page active (Pix, certification, orga.pix.fr) et adapter l'affichage du bouton flottant ou du tableau de bord.</li>
+        <li><code>scripting</code> : Pour injecter le bouton d'aide et la fenêtre de chat dans les pages Pix.</li>
+        <li><code>storage</code> : Pour sauvegarder vos préférences (activation/désactivation).</li>
+        <li><code>host_permissions</code> (<code>pix.fr</code>, <code>app.pix.fr</code>, <code>orga.pix.fr</code>, <code>api.maxlware.com</code>) : Uniquement pour interagir avec ces sites et envoyer les données de session nécessaires.</li>
+    </ul>
+
+    <h3>2.9. Droits des utilisateurs (RGPD)</h3>
+    <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant. Pour l'exercer, contactez le développeur à l'adresse ci-dessous. Étant donné que les données de session sont éphémères et automatiquement supprimées, la fenêtre d'exercice de ces droits est limitée à la durée de la session active.</p>
+
+    <h3>2.10. Données personnelles – Engagement</h3>
+    <p>PixHelp Prof ne collecte pas de données personnelles sensibles en dehors du contexte strict de la session d'assistance. Aucune donnée n'est conservée au-delà de la session, et aucun profilage n'est effectué.</p>
+
+    <h2>3. Contact et signalement</h2>
+    <p>Pour toute question relative aux conditions d'utilisation ou à la confidentialité, ou pour signaler un abus, veuillez contacter :</p>
+    <div class="legal-box">
+        <strong>Développeur :</strong> Maxlware<br>
+        <strong>Email :</strong> contact@maxlware.com<br>
+        <strong>GitHub :</strong> <a href="https://github.com/Maxlware-fr/PixHelp" target="_blank">github.com/Maxlware-fr/PixHelp</a>
+    </div>
+
+    <h2>4. Acceptation des conditions</h2>
+    <p>En installant et en utilisant PixHelp, vous reconnaissez avoir lu, compris et accepté l'intégralité des présentes conditions d'utilisation et de la politique de confidentialité. Si vous n'êtes pas d'accord, veuillez ne pas installer ou désinstaller immédiatement l'extension.</p>
+
+    <footer>
+        © 2026 – PixHelp, assistant non officiel pour la plateforme Pix.<br>
+        <a href="index.html">Accueil</a> | <a href="#">Haut de page</a>
+    </footer>
+</body>
+</html>
