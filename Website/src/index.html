@@ -8,858 +8,264 @@
     <title>PixHelp – Assistant pour Pix</title>
     <link rel="icon" href="assets/icon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        :root {
-            --blue-deep:   #0f2a52;
-            --blue-mid:    #1a4a8a;
-            --blue-bright: #2a6fd6;
-            --blue-light:  #d6e8ff;
-            --blue-glow:   #5b9ef4;
-            --accent:      #f4a623;
-            --accent-soft: #fff4e0;
-            --bg:          #f5f8ff;
-            --surface:     #ffffff;
-            --text:        #0f1e33;
-            --text-muted:  #5a7399;
-            --border:      #d8e5f5;
-            --radius:      16px;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.65;
-            overflow-x: hidden;
-        }
-
-        /* ── NAV ── */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(245,248,255,0.85);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border);
-            padding: 0 40px;
-            height: 62px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-weight: 700;
-            font-size: 1.15rem;
-            color: var(--blue-deep);
-            text-decoration: none;
-        }
-        .nav-brand img { width: 32px; height: 32px; }
-        .nav-links {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 6px 14px;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
-        }
-        .nav-links a:hover { background: var(--blue-light); color: var(--blue-mid); }
-        .nav-links .cta {
-            background: var(--blue-bright);
-            color: white;
-        }
-        .nav-links .cta:hover { background: var(--blue-mid); color: white; }
-
-        /* ── HERO ── */
-        .hero {
-            position: relative;
-            padding: 100px 40px 90px;
-            text-align: center;
-            overflow: hidden;
-        }
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse 80% 60% at 50% -10%, #c6dcff 0%, transparent 70%),
-                        radial-gradient(ellipse 40% 40% at 80% 80%, #e8f3ff 0%, transparent 60%);
-            z-index: 0;
-        }
-        .hero-dots {
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(circle, #b8d0f0 1px, transparent 1px);
-            background-size: 28px 28px;
-            opacity: 0.35;
-            z-index: 0;
-        }
-        .hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: var(--accent-soft);
-            color: #b87500;
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 5px 14px;
-            border-radius: 100px;
-            margin-bottom: 28px;
-            border: 1px solid #f4d08a;
-        }
-        .hero h1 {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: clamp(2.6rem, 6vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
-            color: var(--blue-deep);
-            letter-spacing: -0.03em;
-            margin-bottom: 22px;
-        }
-        .hero h1 span {
-            background: linear-gradient(135deg, #1a6fd6, #5b9ef4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 540px;
-            margin: 0 auto 36px;
-        }
-        .hero-ctas {
-            display: flex;
-            gap: 14px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 13px 26px;
-            border-radius: 10px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
-            cursor: pointer;
-            border: none;
-        }
-        .btn:hover { transform: translateY(-2px); }
-        .btn-primary {
-            background: var(--blue-bright);
-            color: white;
-            box-shadow: 0 4px 18px rgba(42,111,214,0.35);
-        }
-        .btn-primary:hover { background: var(--blue-mid); box-shadow: 0 6px 24px rgba(42,111,214,0.45); }
-        .btn-ghost {
-            background: white;
-            color: var(--blue-mid);
-            border: 1.5px solid var(--border);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-        .btn-ghost:hover { background: var(--blue-light); }
-        .btn-dark {
-            background: #1c2432;
-            color: white;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-        }
-        .btn-dark:hover { background: #111827; }
-
-        /* ── SCREENSHOT MOCKUP ── */
-        .hero-mockup {
-            position: relative;
-            z-index: 1;
-            margin: 60px auto 0;
-            max-width: 820px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 24px 80px rgba(15,42,82,0.14), 0 4px 16px rgba(15,42,82,0.08);
-            overflow: hidden;
-            border: 1px solid var(--border);
-        }
-        .mockup-bar {
-            background: #f0f4f8;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            border-bottom: 1px solid var(--border);
-        }
-        .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
-        .mockup-dot:nth-child(1) { background: #ff5f57; }
-        .mockup-dot:nth-child(2) { background: #ffbc2e; }
-        .mockup-dot:nth-child(3) { background: #28c840; }
-        .mockup-url {
-            flex: 1;
-            background: white;
-            border-radius: 6px;
-            padding: 5px 12px;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            border: 1px solid #e0e8f0;
-            margin-left: 10px;
-        }
-        .mockup-body {
-            background: #f5f8ff;
-            height: 240px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            gap: 10px;
-        }
-
-        /* ── SECTION CONTAINER ── */
-        .section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
-        .section-label {
-            display: inline-block;
-            background: var(--blue-light);
-            color: var(--blue-mid);
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 5px 14px;
-            border-radius: 100px;
-            margin-bottom: 16px;
-        }
-        .section-title {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 800;
-            color: var(--blue-deep);
-            letter-spacing: -0.02em;
-            line-height: 1.15;
-            margin-bottom: 14px;
-        }
-        .section-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 560px; }
-
-        /* ── STATS BAR ── */
-        .stats-bar {
-            background: var(--blue-deep);
-            padding: 0 40px;
-        }
-        .stats-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            padding: 40px 0;
-            gap: 24px;
-        }
-        .stat { text-align: center; }
-        .stat-num {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: white;
-            letter-spacing: -0.02em;
-        }
-        .stat-num span { color: var(--blue-glow); }
-        .stat-label { color: #7ba8d6; font-size: 0.85rem; margin-top: 2px; }
-
-        /* ── FEATURES ── */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 22px;
-            margin-top: 50px;
-        }
-        .feature-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 30px;
-            transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
-        }
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(42,111,214,0.12);
-            border-color: #a8c8f8;
-        }
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 18px;
-        }
-        .icon-blue  { background: #ddeeff; }
-        .icon-green { background: #ddf5e8; }
-        .icon-red   { background: #ffe4e4; }
-        .icon-amber { background: #fff3d6; }
-        .icon-violet{ background: #eee4ff; }
-        .feature-card h3 {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--blue-deep);
-            margin-bottom: 8px;
-        }
-        .feature-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
-
-        /* ── HOW IT WORKS ── */
-        .how-section { background: white; padding: 80px 40px; }
-        .how-inner { max-width: 1100px; margin: 0 auto; }
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 0;
-            margin-top: 50px;
-            position: relative;
-        }
-        .steps::before {
-            content: '';
-            position: absolute;
-            top: 28px;
-            left: 10%;
-            right: 10%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--blue-light), var(--blue-bright), var(--blue-light));
-            z-index: 0;
-        }
-        .step { text-align: center; padding: 0 20px; position: relative; z-index: 1; }
-        .step-num {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: white;
-            border: 2.5px solid var(--blue-bright);
-            color: var(--blue-bright);
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 18px;
-            box-shadow: 0 4px 16px rgba(42,111,214,0.15);
-        }
-        .step h4 {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-weight: 700;
-            color: var(--blue-deep);
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
-        .step p { font-size: 0.85rem; color: var(--text-muted); }
-        .step code {
-            background: var(--blue-light);
-            color: var(--blue-mid);
-            padding: 1px 6px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            font-family: 'DM Mono', monospace;
-        }
-
-        /* ── BROWSER TABS ── */
-        .browser-tabs {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-        .browser-tab {
-            background: var(--surface);
-            border: 1.5px solid var(--border);
-            border-radius: 12px;
-            padding: 18px 24px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex: 1;
-            min-width: 180px;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .browser-tab:hover { border-color: var(--blue-glow); box-shadow: 0 4px 16px rgba(42,111,214,0.1); }
-        .browser-tab .icon { font-size: 1.6rem; }
-        .browser-tab strong { display: block; font-weight: 600; color: var(--blue-deep); font-size: 0.95rem; }
-        .browser-tab span { font-size: 0.8rem; color: var(--text-muted); }
-
-        /* ── SAFETY SECTION ── */
-        .safety-section {
-            background: linear-gradient(135deg, #0f2a52 0%, #1a4a8a 100%);
-            padding: 80px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        .safety-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
-        .safety-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-        }
-        .safety-inner .section-label { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); }
-        .safety-inner .section-title { color: white; }
-        .safety-inner .section-sub { color: rgba(255,255,255,0.6); max-width: 100%; }
-        .safety-card {
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: var(--radius);
-            padding: 28px;
-            backdrop-filter: blur(10px);
-        }
-        .safety-card h4 {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .safety-card p { color: rgba(255,255,255,0.55); font-size: 0.9rem; line-height: 1.6; }
-        .safety-cards { display: flex; flex-direction: column; gap: 16px; }
-
-        /* ── FAQ ── */
-        .faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; max-width: 780px; }
-        .faq-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .faq-q {
-            padding: 18px 24px;
-            font-weight: 600;
-            color: var(--blue-deep);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            transition: background 0.18s;
-        }
-        .faq-q:hover { background: var(--blue-light); }
-        .faq-q .arrow {
-            font-size: 1.1rem;
-            transition: transform 0.25s;
-            flex-shrink: 0;
-        }
-        .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
-        .faq-a {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s;
-        }
-        .faq-item.open .faq-a { max-height: 200px; }
-        .faq-a-inner {
-            padding: 0 24px 18px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.7;
-            border-top: 1px solid var(--border);
-        }
-
-        /* ── DISCLAIMER ── */
-        .disclaimer {
-            background: var(--accent-soft);
-            border: 1.5px solid #f4d08a;
-            border-radius: var(--radius);
-            padding: 20px 28px;
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            max-width: 1100px;
-            margin: 0 auto 0;
-        }
-        .disclaimer-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 1px; }
-        .disclaimer strong { display: block; color: #8a5e00; margin-bottom: 4px; font-size: 0.95rem; }
-        .disclaimer p { color: #a07020; font-size: 0.88rem; line-height: 1.6; }
-
-        /* ── FOOTER ── */
-        footer {
-            background: white;
-            border-top: 1px solid var(--border);
-            padding: 50px 40px 30px;
-        }
-        .footer-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 40px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid var(--border);
-        }
-        .footer-brand { display: flex; flex-direction: column; gap: 10px; }
-        .footer-brand .name {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--blue-deep);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .footer-brand .name img { width: 28px; }
-        .footer-brand p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 260px; }
-        .footer-col h5 {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 14px;
-        }
-        .footer-col a {
-            display: block;
-            color: var(--blue-deep);
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 4px 0;
-            transition: color 0.18s;
-        }
-        .footer-col a:hover { color: var(--blue-bright); }
-        .footer-bottom {
-            max-width: 1100px;
-            margin: 24px auto 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .footer-bottom p { font-size: 0.82rem; color: var(--text-muted); }
-        .badge-unofficial {
-            background: #f0f4f9;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            padding: 4px 12px;
-            border-radius: 100px;
-            border: 1px solid var(--border);
-        }
-
-        /* ── ANIMATIONS ── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .hero-content > * { animation: fadeUp 0.7s ease both; }
-        .hero-content > *:nth-child(1) { animation-delay: 0.05s; }
-        .hero-content > *:nth-child(2) { animation-delay: 0.15s; }
-        .hero-content > *:nth-child(3) { animation-delay: 0.25s; }
-        .hero-content > *:nth-child(4) { animation-delay: 0.35s; }
-        .hero-mockup { animation: fadeUp 0.8s 0.45s ease both; }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 820px) {
-            nav { padding: 0 20px; }
-            .nav-links a:not(.cta) { display: none; }
-            .hero { padding: 60px 20px 60px; }
-            .section { padding: 60px 20px; }
-            .how-section { padding: 60px 20px; }
-            .safety-section { padding: 60px 20px; }
-            .safety-inner { grid-template-columns: 1fr; gap: 40px; }
-            .steps::before { display: none; }
-            footer { padding: 40px 20px 24px; }
-            .footer-inner { grid-template-columns: 1fr; gap: 28px; }
-            .footer-bottom { flex-direction: column; align-items: flex-start; }
-            .disclaimer { margin: 0 20px; }
-        }
-        @media (max-width: 500px) {
-            .stats-inner { flex-direction: column; align-items: center; gap: 30px; }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
+<nav id="navbar">
     <a class="nav-brand" href="#">
-        <img src="assets/icon.png" alt="PixHelp icon">
+        <img src="assets/icon.png" alt="PixHelp">
         PixHelp
     </a>
     <div class="nav-links">
         <a href="#features">Fonctionnalités</a>
         <a href="#install">Installation</a>
         <a href="#faq">FAQ</a>
-        <a href="https://github.com/maxlware-fr/PixHelp/releases" class="cta" target="_blank">⬇ Télécharger</a>
+        <a href="https://github.com/maxlware-fr/PixHelp/releases" class="nav-dl" target="_blank">⬇ Télécharger l'extension</a>
     </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-dots"></div>
+    <div class="hero-grid"></div>
     <div class="hero-content">
-        <div class="hero-badge">🎓 Outil pour l'éducation</div>
-        <h1>Ton assistant pour<br><span>réussir sur Pix</span></h1>
-        <p>PixHelp est une extension navigateur qui t'aide à trouver les réponses sur Pix, avec protection automatique pendant les certifications.</p>
-        <div class="hero-ctas">
+        <div class="hero-icon">
+            <img src="assets/icon.png" alt="PixHelp">
+        </div>
+        <h1>Ton assistant pour<br>réussir sur <em>Pix.</em></h1>
+        <p>PixHelp est une extension navigateur libre et gratuite qui t'aide à progresser sur Pix, pour connaitre mieux le monde numérique.</p>
+        <div class="hero-btns">
             <a href="https://github.com/maxlware-fr/PixHelp/releases" class="btn btn-primary" target="_blank">⬇ Télécharger gratuitement</a>
-            <a href="#features" class="btn btn-ghost">Voir les fonctionnalités</a>
+            <a href="https://github.com/maxlware-fr/PixHelp" class="btn btn-outline" target="_blank">&lt;/&gt; Contribuer sur GitHub</a>
         </div>
     </div>
-
     <div class="hero-mockup">
-        <div class="mockup-bar">
-            <div class="mockup-dot"></div>
-            <div class="mockup-dot"></div>
-            <div class="mockup-dot"></div>
-            <div class="mockup-url">https://app.pix.fr/assessments/...</div>
-        </div>
-        <div class="mockup-body">
-            <img src="assets/help.png" alt="Aperçu PixHelp" style="max-height: 200px; max-width: 90%; border-radius: 8px; object-fit: cover;">
-        </div>
-    </div>
-</section>
-
-<!-- STATS -->
-<div class="stats-bar">
-    <div class="stats-inner">
-        <div class="stat">
-            <div class="stat-num">100<span>%</span></div>
-            <div class="stat-label">Gratuit &amp; open-source</div>
-        </div>
-        <div class="stat">
-            <div class="stat-num">2<span> min</span></div>
-            <div class="stat-label">Pour installer l'extension</div>
-        </div>
-        <div class="stat">
-            <div class="stat-num">3<span>+</span></div>
-            <div class="stat-label">Navigateurs supportés</div>
-        </div>
-        <div class="stat">
-            <div class="stat-num">0<span>€</span></div>
-            <div class="stat-label">Sans abonnement</div>
-        </div>
-    </div>
-</div>
-
-<!-- FEATURES -->
-<section class="section" id="features">
-    <div class="section-label">✨ Fonctionnalités</div>
-    <h2 class="section-title">Tout ce dont tu as besoin</h2>
-    <p class="section-sub">Une extension légère et efficace, pensée pour t'accompagner au quotidien sur Pix.</p>
-
-    <div class="features-grid">
-        <div class="feature-card">
-            <div class="feature-icon icon-blue">✅</div>
-            <h3>Aide sur les questions</h3>
-            <p>PixHelp t'aide à trouver et comprendre les réponses aux questions Pix de manière rapide et efficace. Plus de blocage sur les exercices difficiles.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon icon-violet">⚙️</div>
-            <h3>Paramètres personnalisables</h3>
-            <p>Active ou désactive l'extension en un seul clic depuis la barre d'outils. Interface épurée avec onglets Infos et Options.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon icon-red">🚫</div>
-            <h3>Protection certification</h3>
-            <p>Sur <code>/certifications</code>, l'extension se désactive automatiquement et floute la section pour éviter toute tricherie en conditions officielles.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon icon-green">🔒</div>
-            <h3>Zéro collecte de données</h3>
-            <p>PixHelp ne collecte aucune donnée personnelle. Tout fonctionne localement dans ton navigateur, sans envoi de requêtes externes.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon icon-amber">⚡</div>
-            <h3>Léger &amp; rapide</h3>
-            <p>Extension minimaliste qui n'alourdit pas ton navigateur. Conçue pour ne pas ralentir le chargement des pages Pix.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon icon-blue">🛠️</div>
-            <h3>Open-source</h3>
-            <p>Le code source est entièrement disponible sur GitHub. Tu peux inspecter, forker et contribuer librement au projet.</p>
+        <div class="browser-window">
+            <div class="browser-bar">
+                <div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div>
+                <div class="browser-url">https://app.pix.fr/assessments/123456/challenges/rec...</div>
+            </div>
+            <div class="browser-body">
+                <img src="assets/help.png" alt="PixHelp en action">
+            </div>
         </div>
     </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<div class="how-section" id="install">
-    <div class="how-inner">
-        <div class="section-label">📥 Installation</div>
-        <h2 class="section-title">Prêt en 2 minutes</h2>
-        <p class="section-sub">Aucune compétence technique requise. Suis ces étapes simples.</p>
+<section class="section features-section" id="features">
+    <div class="section-inner">
+        <div class="section-header center">
+            <div class="eyebrow">Fonctionnalités</div>
+            <h2 class="section-title">Conçu avec soin<br>et attention au détail</h2>
+            <p class="section-sub">Chaque fonctionnalité de PixHelp est pensée pour t'aider à progresser sur Pix, dans le respect des règles.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feat-card">
+                <div class="feat-card-preview">
+                    <div class="ui-preview">
+                        <div class="ui-label">Question Pix</div>
+                        <div class="ui-q">Quel format est utilisé pour structurer des données échangées via une API ?</div>
+                        <div class="ui-choices">
+                            <div class="ui-choice">XML</div>
+                            <div class="ui-choice correct">✓ JSON</div>
+                            <div class="ui-choice">CSV</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feat-card-body">
+                    <h3>✅ Aide sur les questions</h3>
+                    <p>PixHelp t'aide à trouver et comprendre les réponses aux questions Pix. Fini les blocages, place à la compréhension.</p>
+                </div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-card-preview">
+                    <div class="ui-preview">
+                        <div class="ui-toggle">
+                            <span>Extension active</span>
+                            <div class="toggle-pill"></div>
+                        </div>
+                        <div class="ui-opt active">📋 Infos</div>
+                        <div class="ui-opt" style="color:var(--text-muted)">⚙️ Options</div>
+                    </div>
+                </div>
+                <div class="feat-card-body">
+                    <h3>⚙️ Paramètres personnalisables</h3>
+                    <p>Active ou désactive l'extension en un clic. Interface épurée avec onglets Infos / Options pour un contrôle total.</p>
+                </div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-card-preview">
+                    <div class="ui-preview">
+                        <div class="ui-badge">🚫 Certification détectée</div>
+                        <div class="ui-blur-box">
+                            <div class="ui-blur-text">Lorem ipsum dolor sit amet certification content blocked...</div>
+                            <div class="ui-warn">PixHelp désactivé automatiquement</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feat-card-body">
+                    <h3>🚫 Protection certification</h3>
+                    <p>Sur les pages <code style="background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:5px;">/certifications</code>, PixHelp se désactive et floute automatiquement la section (voir terms).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-        <div class="steps">
+<section class="privacy-section">
+    <div class="privacy-inner">
+        <div class="section-header center">
+            <div class="eyebrow">Vie privée &amp; sécurité</div>
+            <h2 class="section-title">Sécurisé et respectueux<br>de ta vie privée</h2>
+            <p class="section-sub">PixHelp ne transmet aucune donnée. Tout fonctionne <span class="privacy-hl">directement dans ton navigateur</span>, sans serveur, sans compte, sans pistage.</p>
+        </div>
+        <div class="privacy-grid">
+            <div class="p-item">
+                <div class="p-ico ico-b">📱</div>
+                <h4>Données locales</h4>
+                <p>Aucune information n'est envoyée à un serveur. Tout reste sur ton appareil, en toute sécurité sauf avec l'utilisation de PixHelp Prof.</p>
+            </div>
+            <div class="p-item">
+                <div class="p-ico ico-g">🔓</div>
+                <h4>Logiciel libre</h4>
+                <p>Le code source est ouvert sur GitHub. Inspecte, audite et contribue à PixHelp librement.</p>
+            </div>
+            <div class="p-item">
+                <div class="p-ico ico-p">🔒</div>
+                <h4>Aucune collecte</h4>
+                <p>Pas de publicité, pas de télémétrie, pas de collecte de données. Jamais.</p>
+            </div>
+            <div class="p-item">
+                <div class="p-ico ico-o">⚡</div>
+                <h4>Léger &amp; rapide</h4>
+                <p>Extension minimaliste qui n'alourdit pas ton navigateur ni le chargement des pages Pix (l'extension fait moins de 1 Mo).</p>
+            </div>
+        </div>
+        <div class="big-claim">
+            <h2>On ne connaît pas tes données.</h2>
+            <p>PixHelp n'a aucune base de données, aucun compte utilisateur. Ton utilisation t'appartient entièrement.</p>
+        </div>
+    </div>
+</section>
+
+<section class="install-section" id="install">
+    <div class="install-inner">
+        <div class="section-header">
+            <div class="eyebrow">📥 Installation</div>
+            <h2 class="section-title">Prêt en 2 minutes</h2>
+            <p class="section-sub">Aucune compétence technique requise. Suis ces 4 étapes simples.</p>
+        </div>
+        <div class="steps-row">
+            <div class="steps-line"></div>
             <div class="step">
                 <div class="step-num">1</div>
                 <h4>Télécharger le ZIP</h4>
-                <p>Récupère la dernière version depuis les <a href="https://github.com/maxlware-fr/PixHelp/releases" target="_blank" style="color:var(--blue-bright)">releases GitHub</a> et décompresse le dossier.</p>
+                <p>Récupère la dernière version depuis les <a href="https://github.com/maxlware-fr/PixHelp/releases" target="_blank" style="color:var(--accent)">releases GitHub</a> et décompresse le dossier.</p>
             </div>
             <div class="step">
                 <div class="step-num">2</div>
                 <h4>Ouvrir les extensions</h4>
-                <p>Accède à <code>chrome://extensions/</code> ou <code>about:debugging</code> selon ton navigateur.</p>
+                <p>Va sur <code>chrome://extensions/</code> ou <code>about:debugging</code> selon ton navigateur.</p>
             </div>
             <div class="step">
                 <div class="step-num">3</div>
-                <h4>Activer le mode dev</h4>
-                <p>Active le <strong>mode développeur</strong> (Chrome/Edge) ou va dans "Ce Firefox" (Firefox).</p>
+                <h4>Mode développeur</h4>
+                <p>Active le <strong>mode développeur</strong> en haut à droite (Chrome/Edge) ou via "Ce Firefox".</p>
             </div>
             <div class="step">
                 <div class="step-num">4</div>
                 <h4>Charger le dossier</h4>
-                <p>Clique sur "Charger l'extension non empaquetée" et sélectionne le dossier téléchargé.</p>
+                <p>Clique sur "Charger l'extension non empaquetée" et sélectionne le dossier décompressé.</p>
             </div>
         </div>
-
-        <div class="browser-tabs" style="margin-top: 50px;">
-            <div class="browser-tab">
-                <div class="icon">🟡</div>
-                <div>
-                    <strong>Chrome</strong>
-                    <span>chrome://extensions/</span>
-                </div>
-            </div>
-            <div class="browser-tab">
-                <div class="icon">🔵</div>
-                <div>
-                    <strong>Microsoft Edge</strong>
-                    <span>edge://extensions/</span>
-                </div>
-            </div>
-            <div class="browser-tab">
-                <div class="icon">🦊</div>
-                <div>
-                    <strong>Firefox</strong>
-                    <span>about:debugging</span>
-                </div>
-            </div>
+        <div class="browsers-row">
+            <div class="browser-pill"><div class="em">🟡</div><div><strong>Google Chrome</strong><span>chrome://extensions/</span></div></div>
+            <div class="browser-pill"><div class="em">🔵</div><div><strong>Microsoft Edge</strong><span>edge://extensions/</span></div></div>
+            <div class="browser-pill"><div class="em">🦊</div><div><strong>Firefox</strong><span>about:debugging</span></div></div>
         </div>
-
-        <div style="margin-top: 40px; display:flex; gap: 14px; flex-wrap: wrap;">
-            <a href="https://github.com/maxlware-fr/PixHelp/releases" class="btn btn-primary" target="_blank">⬇ Télécharger PixHelp</a>
-            <a href="https://github.com/maxlware-fr/PixHelp" class="btn btn-dark" target="_blank">★ GitHub</a>
-            <a href="https://github.com/maxlware-fr/PixHelp/issues" class="btn btn-ghost" target="_blank">🐛 Signaler un bug</a>
+        <div class="install-ctas">
+            <a href="https://github.com/maxlware-fr/PixHelp/releases" class="btn btn-solid" target="_blank">⬇ Télécharger PixHelp</a>
+            <a href="https://github.com/maxlware-fr/PixHelp" class="btn btn-dark-pill" target="_blank">★ Voir sur GitHub</a>
+            <a href="https://github.com/maxlware-fr/PixHelp/issues" class="btn btn-ghost-pill" target="_blank">🐛 Signaler un bug</a>
         </div>
     </div>
-</div>
+</section>
 
-<!-- SAFETY -->
-<section class="safety-section">
-    <div class="safety-inner">
-        <div>
-            <div class="section-label">🛡️ Éthique</div>
-            <h2 class="section-title">Conçu de manière responsable</h2>
-            <p class="section-sub">PixHelp est pensé pour l'apprentissage, pas pour tricher. Des garde-fous automatiques protègent l'intégrité des certifications officielles.</p>
-        </div>
-        <div class="safety-cards">
-            <div class="safety-card">
-                <h4>🚫 Blocage certifications</h4>
-                <p>Sur toutes les pages <code>/certifications</code>, PixHelp se désactive automatiquement. Le contenu est flouté et un message d'avertissement s'affiche.</p>
+<section class="faq-section" id="faq">
+    <div class="faq-inner">
+        <div class="eyebrow">FAQ</div>
+        <h2 class="section-title">Questions fréquentes</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q">PixHelp est-il gratuit ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Oui, PixHelp est entièrement gratuit et open-source. Pas d'abonnement, pas de version premium. Le code source est accessible sur GitHub.</div></div>
             </div>
-            <div class="safety-card">
-                <h4>📚 Pour l'apprentissage</h4>
-                <p>L'outil est conçu pour comprendre et progresser sur les compétences numériques, pas pour contourner les évaluations officielles.</p>
+            <div class="faq-item">
+                <div class="faq-q">L'extension fonctionne-t-elle sur Firefox ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Oui ! PixHelp est compatible avec Chrome, Microsoft Edge et Firefox grâce à Manifest V3. Chaque navigateur a sa propre procédure détaillée dans la section installation.</div></div>
             </div>
-            <div class="safety-card">
-                <h4>⚠️ Extension non officielle</h4>
-                <p>PixHelp n'est pas affiliée à Pix. Utilise-la dans le cadre autorisé par ton établissement scolaire.</p>
+            <div class="faq-item">
+                <div class="faq-q">Est-ce que PixHelp collecte mes données ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Non. PixHelp n'a aucun serveur ni base de données. Tout fonctionne localement dans ton navigateur. Aucune donnée ne quitte ton appareil. Sauf avec l'utilisation de PixHelp Prof.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">L'extension se désactive-t-elle pendant les certifications ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Oui, c'est automatique. Sur toutes les pages <code>/certifications</code> de Pix, PixHelp détecte le contexte, se désactive et floute la section avec un avertissement visible.</div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Comment contribuer ou signaler un bug ? <span class="faq-arr">▾</span></div>
+                <div class="faq-a"><div class="faq-a-inner">Ouvre une issue ou une pull request sur GitHub. Les contributions sont les bienvenues !</div></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- FAQ -->
-<section class="section" id="faq">
-    <div class="section-label">❓ FAQ</div>
-    <h2 class="section-title">Questions fréquentes</h2>
-
-    <div class="faq-list">
-        <div class="faq-item">
-            <div class="faq-q">PixHelp est-il gratuit ? <span class="arrow">▾</span></div>
-            <div class="faq-a"><div class="faq-a-inner">Oui, PixHelp est entièrement gratuit et open-source. Tu peux consulter le code source sur GitHub à tout moment.</div></div>
+<section class="cta-section">
+    <div class="cta-box">
+        <div class="eyebrow">Gratuit &amp; open-source</div>
+        <h2 class="section-title">Pas une simple extension,<br>mais une <em>aide pour apprendre.</em></h2>
+        <p>PixHelp est né de la volonté d'aider les élèves à progresser sur Pix, dans le respect de l'intégrité des certifications officielles.</p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+            <a href="https://github.com/maxlware-fr/PixHelp/releases" class="btn btn-solid" target="_blank">⬇ Télécharger gratuitement</a>
+            <a href="https://pix.fr" class="btn btn-ghost-pill" target="_blank">Aller sur Pix →</a>
         </div>
-        <div class="faq-item">
-            <div class="faq-q">L'extension fonctionne-t-elle sur Firefox ? <span class="arrow">▾</span></div>
-            <div class="faq-a"><div class="faq-a-inner">Oui ! PixHelp supporte Chrome, Microsoft Edge et Firefox. Chaque navigateur a sa propre procédure d'installation décrite ci-dessus.</div></div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">Est-ce que PixHelp collecte mes données ? <span class="arrow">▾</span></div>
-            <div class="faq-a"><div class="faq-a-inner">Absolument pas. PixHelp fonctionne entièrement en local dans ton navigateur. Aucune donnée n'est envoyée à un serveur externe.</div></div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">L'extension se désactive-t-elle pendant les certifications ? <span class="arrow">▾</span></div>
-            <div class="faq-a"><div class="faq-a-inner">Oui, c'est automatique. Sur toutes les pages <code>/certifications</code> de Pix, PixHelp se désactive et floute la section concernée avec un message d'avertissement visible.</div></div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">Comment signaler un bug ou proposer une fonctionnalité ? <span class="arrow">▾</span></div>
-            <div class="faq-a"><div class="faq-a-inner">Ouvre une issue sur la page GitHub du projet. Les contributions sont les bienvenues !</div></div>
-        </div>
+        <div class="disclaimer-pill">⚠️ Extension non officielle — non affiliée à Pix (1024pix)</div>
     </div>
 </section>
 
-<!-- DISCLAIMER -->
-<div style="padding: 0 40px 60px; max-width: 1180px; margin: 0 auto;">
-    <div class="disclaimer">
-        <div class="disclaimer-icon">⚠️</div>
-        <div>
-            <strong>Avertissement – Extension non officielle</strong>
-            <p>PixHelp n'est pas développée ni affiliée à Pix (GIP Pix). Elle est proposée à titre d'outil éducatif complémentaire. Utilise-la dans le respect du règlement de ton établissement. En cas de doute, demande l'autorisation à ton enseignant.</p>
-        </div>
-    </div>
-</div>
-
-<!-- FOOTER -->
 <footer>
     <div class="footer-inner">
-        <div class="footer-brand">
-            <div class="name">
-                <img src="assets/icon.png" alt="PixHelp">
-                PixHelp
-            </div>
-            <p>Assistant non officiel pour Pix. Conçu pour aider les élèves à progresser dans leurs compétences numériques.</p>
-            <p style="margin-top: 8px; font-size: 0.8rem; color: #9ab0c8;">Développé par <a href="https://maxlware.com" style="color:var(--blue-bright);text-decoration:none">maxlware</a></p>
+        <div>
+            <div class="f-brand-name"><img src="assets/icon.png" alt="PixHelp">PixHelp</div>
+            <p class="f-desc">Assistant non officiel pour la plateforme Pix. Conçu pour aider les élèves à progresser dans leurs compétences numériques.<br><br>Développé par <a href="https://maxlware.com?utm_source=pixhelp" style="color:var(--accent);text-decoration:none">maxlware</a></p>
         </div>
-        <div class="footer-col">
-            <h5>Liens</h5>
-            <a href="https://github.com/maxlware-fr/PixHelp/releases" target="_blank">⬇ Télécharger</a>
-            <a href="https://github.com/maxlware-fr/PixHelp" target="_blank">★ GitHub</a>
-            <a href="https://github.com/maxlware-fr/PixHelp/issues" target="_blank">🐛 Signaler un bug</a>
+        <div class="f-col">
+            <h5>Ressources</h5>
+            <a href="https://github.com/maxlware-fr/PixHelp/releases" target="_blank">Télécharger</a>
+            <a href="https://github.com/maxlware-fr/PixHelp" target="_blank">GitHub</a>
+            <a href="https://github.com/maxlware-fr/PixHelp/issues" target="_blank">Signaler un bug</a>
+        </div>
+        <div class="f-col">
+            <h5>Liens utiles</h5>
             <a href="https://pix.fr" target="_blank">Site officiel Pix</a>
+            <a href="https://maxlware.com?utm_source=pixhelp" target="_blank">maxlware.com</a>
         </div>
-        <div class="footer-col">
+        <div class="f-col">
             <h5>Légal</h5>
-            <a href="#">Mentions légales</a>
+            <a href="terms.html">Mentions légales</a>
+            <a href="terms.html">Confidentialité</a>
             <a href="https://maxlware.com/fr-fr/contact">Contact</a>
-            <a href="#">Politique de confidentialité</a>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>© 2025 PixHelp — Projet open-source non affilié à Pix</p>
-        <span class="badge-unofficial">Extension non officielle</span>
+        <p>© 2026 PixHelp — Projet open-source non affilié à Pix</p>
+        <span class="badge-noff">Extension non officielle</span>
     </div>
 </footer>
 
 <script>
-    // FAQ accordion
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
     document.querySelectorAll('.faq-q').forEach(btn => {
         btn.addEventListener('click', () => {
             const item = btn.parentElement;
@@ -869,6 +275,5 @@
         });
     });
 </script>
-
 </body>
 </html>
